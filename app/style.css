@@ -1,0 +1,192 @@
+/* Vice Frame — editor chrome. Dark poster-studio theme, gold + neon-pink accents. */
+:root {
+  --bg: #0c0516;
+  --panel: #170b29;
+  --panel-2: #1f0e36;
+  --line: #38204f;
+  --text: #f3ecff;
+  --muted: #b7a6d9;
+  --gold: #f2b33d;
+  --gold-soft: #ffd98a;
+  --pink: #ff4fa3;
+  --danger: #ff6b81;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---------- top bar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 20px;
+  background: linear-gradient(180deg, #1c0b33, #12071f);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.brand span { color: var(--pink); margin-left: 6px; }
+.steps { color: var(--muted); font-size: 13px; letter-spacing: .4px; }
+.steps b { color: var(--gold-soft); }
+button.primary {
+  margin-left: auto;
+  background: linear-gradient(180deg, #ffc95e, #f29a1d);
+  color: #2a1500;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 10px 22px;
+  cursor: pointer;
+  box-shadow: 0 2px 14px rgba(242, 179, 61, .35);
+}
+button.primary:hover { filter: brightness(1.07); }
+
+/* ---------- layout ---------- */
+.workspace {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 18px 20px 22px;
+}
+.stage { flex: 1 1 auto; min-width: 0; }
+.stage canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #150826;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .55);
+  cursor: grab;
+  touch-action: none;
+}
+.stage canvas:active { cursor: grabbing; }
+.hint { color: var(--muted); font-size: 12.5px; margin: 10px 2px 0; }
+
+/* ---------- control panel ---------- */
+.controls {
+  flex: 0 0 322px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.group {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px 16px;
+}
+.group h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+.group h2 .accent { color: var(--pink); letter-spacing: 1px; }
+.lab {
+  display: block;
+  font-size: 11.5px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 10px 0 5px;
+}
+.lab span { color: var(--gold-soft); letter-spacing: 0; }
+
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button {
+  flex: 1 1 auto;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 9px;
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.seg button:hover { border-color: var(--gold); }
+.seg button.on {
+  background: linear-gradient(180deg, #3a1160, #2a0a47);
+  border-color: var(--gold);
+  color: var(--gold-soft);
+  font-weight: 700;
+}
+
+.wide-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  background: linear-gradient(180deg, #ff6ec7, #e83e8c);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.wide-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--pink);
+  color: var(--pink);
+}
+.wide-btn.ghost.on { background: rgba(255, 79, 163, .16); }
+.wide-btn:hover { filter: brightness(1.08); }
+
+input[type="text"] {
+  width: 100%;
+  background: #0f0620;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 13.5px;
+}
+input[type="text"]:focus { outline: 1px solid var(--gold); border-color: var(--gold); }
+
+input[type="range"] { width: 100%; accent-color: var(--gold); margin: 2px 0 4px; }
+
+.checks { display: flex; gap: 18px; margin-top: 8px; font-size: 13px; color: var(--text); }
+.checks input { accent-color: var(--gold); }
+
+.row2 { display: flex; gap: 10px; }
+.row2 > div { flex: 1; }
+
+.btnrow { display: flex; gap: 6px; margin-top: 10px; }
+button.mini {
+  flex: 1;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 6px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+button.mini:hover { border-color: var(--gold); }
+button.mini.danger { color: var(--danger); }
+.tiny { color: var(--muted); font-size: 11.5px; margin: 10px 0 0; line-height: 1.45; }
+
+/* ---------- screenshot mode: poster only, full bleed ---------- */
+body.shot .topbar,
+body.shot .controls,
+body.shot .hint { display: none; }
+body.shot .workspace { padding: 0; gap: 0; }
+body.shot .stage canvas { border: 0; border-radius: 0; box-shadow: none; }
