@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Frame — GTA-Style Cover Art Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">VICE<span>FRAME</span></div>
+  <div class="steps"><b>1</b> Layout &nbsp;·&nbsp; <b>2</b> Photos &nbsp;·&nbsp; <b>3</b> Words &nbsp;·&nbsp; <b>4</b> Export</div>
+  <button id="exportBtn" class="primary" type="button">Export PNG</button>
+</header>
+
+<main class="workspace">
+  <section class="stage">
+    <canvas id="poster" width="1920" height="1080"></canvas>
+    <p class="hint">Click a panel to select it · drag to pan its photo · scroll to zoom · drop photo files onto the poster</p>
+  </section>
+
+  <aside class="controls">
+    <div class="group">
+      <h2>Poster</h2>
+      <label class="lab">Export size</label>
+      <div class="seg" id="sizeSeg">
+        <button type="button" data-size="wide" class="on">Wide 1920×1080</button>
+        <button type="button" data-size="square">Square 1080×1080</button>
+        <button type="button" data-size="portrait">Portrait 1080×1350</button>
+      </div>
+      <label class="lab">Panel layout</label>
+      <div class="seg" id="layoutSeg">
+        <button type="button" data-layout="poster7" class="on">Poster · 7</button>
+        <button type="button" data-layout="classic6">Classic · 6</button>
+        <button type="button" data-layout="bold4">Bold · 4</button>
+      </div>
+      <button id="demoBtn" class="wide-btn" type="button">Load demo cast</button>
+      <button id="spreadBtn" class="wide-btn ghost" type="button">Spread one photo across all panels</button>
+    </div>
+
+    <div class="group">
+      <h2>Colour grade</h2>
+      <div class="seg" id="gradeSeg">
+        <button type="button" data-grade="sunset" class="on">Sunset</button>
+        <button type="button" data-grade="neon">Neon Nights</button>
+        <button type="button" data-grade="golden">Golden Hour</button>
+        <button type="button" data-grade="noir">Noir</button>
+      </div>
+      <label class="lab">Grade intensity <span id="intensityVal">100%</span></label>
+      <input id="intensity" type="range" min="0" max="160" value="100">
+      <div class="checks">
+        <label><input id="vignette" type="checkbox" checked> Vignette</label>
+        <label><input id="grain" type="checkbox" checked> Film grain</label>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Words</h2>
+      <label class="lab">Title</label>
+      <input id="fTitle" type="text" value="SALT &amp; SIRENS" maxlength="30">
+      <label class="lab">Neon subtitle</label>
+      <input id="fSubtitle" type="text" value="one last sunset job" maxlength="40">
+      <label class="lab">Tagline ribbon</label>
+      <input id="fTagline" type="text" value="EVERYONE WANTS A CUT OF THE SUNSET" maxlength="60">
+      <label class="lab">Press quote</label>
+      <input id="fQuote" type="text" value="A SUNSET YOU CAN'T OUTRUN" maxlength="60">
+      <label class="lab">Quote source</label>
+      <input id="fQuoteBy" type="text" value="THE PALM GAZETTE" maxlength="40">
+      <label class="lab">Billing credits</label>
+      <input id="fCredits" type="text" value="VICE FRAME PICTURES · A SALT &amp; SIRENS STORY · STARRING YOU AND YOUR CREW · MUSIC BY THE BOARDWALK KINGS · EDITED BY L. MARLOWE" maxlength="160">
+      <div class="row2">
+        <div>
+          <label class="lab">Release line</label>
+          <input id="fSoon" type="text" value="COMING SOON" maxlength="24">
+        </div>
+        <div>
+          <label class="lab">Volume</label>
+          <input id="fVol" type="text" value="VOL. 1" maxlength="10">
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Panel <span id="panelName" class="accent">—</span></h2>
+      <label class="lab">Role tag</label>
+      <input id="fTag" type="text" value="" maxlength="24" placeholder="THE DRIVER">
+      <label class="lab">Zoom <span id="zoomVal">100%</span></label>
+      <input id="zoom" type="range" min="100" max="320" value="100">
+      <div class="btnrow">
+        <button id="loadPhotoBtn" class="mini" type="button">Load photo…</button>
+        <button id="resetPanelBtn" class="mini" type="button">Re-centre</button>
+        <button id="clearPanelBtn" class="mini danger" type="button">Remove</button>
+      </div>
+      <p class="tiny">Photos are read on this machine only — nothing is ever uploaded.</p>
+    </div>
+  </aside>
+</main>
+
+<input id="filePicker" type="file" accept="image/*" hidden>
+<script src="app.js"></script>
+</body>
+</html>
